@@ -11,7 +11,7 @@ class Pegawai extends Model
 
     protected $table = 'pegawai';
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'tanggal_lahir'];
 
     protected $fillable = ['nama', 'email', 'telepon', 'tanggal_lahir', 'jenis_kelamin', 'pekerjaan_id'];
 
