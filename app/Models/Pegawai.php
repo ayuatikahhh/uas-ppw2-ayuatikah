@@ -13,6 +13,8 @@ class Pegawai extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $fillable = ['nama', 'email', 'telepon', 'tanggal_lahir', 'jenis_kelamin', 'pekerjaan_id'];
+
     public function pekerjaan()
     {
         return $this->belongsTo(Pekerjaan::class);
