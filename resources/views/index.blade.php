@@ -54,6 +54,7 @@
         new Chart(ctx2, {
             type: 'bar',
             data: {
+                
                 labels: [
                     "Software Engineer",
                     "Data Analyst",
