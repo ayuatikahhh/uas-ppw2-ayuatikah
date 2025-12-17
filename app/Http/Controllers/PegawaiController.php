@@ -42,18 +42,19 @@ class PegawaiController extends Controller
 
         if ($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
 
-        $data = new Pegawai();
-        $data->nama = $request->nama;
-        $data->email = $request->email;
-        $data->telepon = $request->telepon;
-        $data->tanggal_lahir = $request->tanggal_lahir;
-        $data->jenis_kelamin = $request->jenis_kelamin;
-        $data->pekerjaan_id = $request->pekerjaan_id;
+        try {
+            $data = new Pegawai();
+            $data->nama = $request->nama;
+            $data->email = $request->email;
+            $data->telepon = $request->telepon;
+            $data->tanggal_lahir = $request->tanggal_lahir;
+            $data->jenis_kelamin = $request->jenis_kelamin;
+            $data->pekerjaan_id = $request->pekerjaan_id;
 
-        if ($data->save()) {
+            $data->save();
             return redirect()->route('pegawai.index')->with('success', 'Data berhasil ditambahkan');
-        } else {
-            return redirect()->route('pegawai.index')->with('success', 'Data tidak tersimpan');
+        } catch (\Exception $e) {
+            return redirect()->route('pegawai.index')->with('error', 'Terjadi kesalahan saat menyimpan data');
         }
     }
 
@@ -75,19 +76,20 @@ class PegawaiController extends Controller
 
         if ($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
 
-        $data = Pegawai::findOrFail($request->id);
+        try {
+            $data = Pegawai::findOrFail($request->id);
 
-        $data->nama = $request->nama;
-        $data->email = $request->email;
-        $data->telepon = $request->telepon;
-        $data->tanggal_lahir = $request->tanggal_lahir;
-        $data->jenis_kelamin = $request->jenis_kelamin;
-        $data->pekerjaan_id = $request->pekerjaan_id;
+            $data->nama = $request->nama;
+            $data->email = $request->email;
+            $data->telepon = $request->telepon;
+            $data->tanggal_lahir = $request->tanggal_lahir;
+            $data->jenis_kelamin = $request->jenis_kelamin;
+            $data->pekerjaan_id = $request->pekerjaan_id;
 
-        if ($data->save()) {
+            $data->save();
             return redirect()->route('pegawai.index')->with('success', 'Data berhasil diubah');
-        } else {
-            return redirect()->route('pegawai.index')->with('success', 'Data tidak tersimpan');
+        } catch (\Exception $e) {
+            return redirect()->route('pegawai.index')->with('error', 'Terjadi kesalahan saat mengubah data');
         }
     }
 
