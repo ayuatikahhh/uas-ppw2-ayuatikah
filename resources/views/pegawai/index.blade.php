@@ -38,8 +38,8 @@
                             <td class="px-4 py-3 text-gray-600">{{ $d->email }}</td>
                             <td class="px-4 py-3 text-gray-600">{{ $d->telepon }}</td>
                             <td class="px-4 py-3 text-gray-600">{{ $d->tanggal_lahir->format('d/m/Y') }}</td>
-                            <td class="px-4 py-3 text-gray-600">{{ $d->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
-                            <td class="px-4 py-3 text-gray-600">{{ $d->pekerjaan->nama }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ $d->jenis_kelamin == 'L' ? 'Laki-laki' : ($d->jenis_kelamin == 'P' ? 'Perempuan' : 'N/A') }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ $d->pekerjaan ? $d->pekerjaan->nama : 'N/A' }}</td>
                             <td class="px-4 py-3 text-center text-gray-600">
                                 <div class="inline-flex rounded-md shadow-sm" role="group">
                                     <a href="{{ route('pegawai.edit', ['id' => $d->id]) }}" class="cursor-pointer rounded-l-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-blue-600 hover:bg-blue-50">
